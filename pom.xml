@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.lxl</groupId>
+    <artifactId>rocketmq</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>trade-order</module>
+        <module>trade-pay</module>
+        <module>trade-coupon</module>
+        <module>trade-web</module>
+        <module>trade-common</module>
+    </modules>
+    <!-- rocketmq版本统一进行管理-->
+    <properties>
+        <rocketmq.version>4.1.0-incubating</rocketmq.version>
+    </properties>
+    <dependencies>
+        <!-- 配置日志文件-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+    </dependencies>
+    <!-- rocketmq 依赖包管理-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.apache.rocketmq</groupId>
+                <artifactId>rocketmq-client</artifactId>
+                <version>${rocketmq.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
