@@ -11,6 +11,7 @@
 
     <artifactId>common</artifactId>
 
+<<<<<<< HEAD
     <dependencies>
         <dependency>
             <groupId>org.apache.rocketmq</groupId>
@@ -18,5 +19,7 @@
             <version>4.1.0-incubating</version>
         </dependency>
     </dependencies>
+=======
+>>>>>>> origin/master
 
 </project>
