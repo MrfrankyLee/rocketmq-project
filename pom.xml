@@ -15,7 +15,7 @@
         <module>trade-web</module>
         <module>trade-common</module>
     </modules>
-<<<<<<< HEAD
+
     <!-- rocketmq版本统一进行管理-->
     <properties>
         <rocketmq.version>4.1.0-incubating</rocketmq.version>
@@ -43,8 +43,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-=======
-
-
->>>>>>> origin/master
 </project>
