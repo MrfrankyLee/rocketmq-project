@@ -19,6 +19,7 @@
     <!-- rocketmq版本统一进行管理-->
     <properties>
         <rocketmq.version>4.1.0-incubating</rocketmq.version>
+        <spring.version>4.3.10.RELEASE</spring.version>
     </properties>
     <dependencies>
         <!-- 配置日志文件-->
@@ -32,6 +33,11 @@
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
     </dependencies>
     <!-- rocketmq 依赖包管理-->
     <dependencyManagement>
@@ -40,6 +46,21 @@
                 <groupId>com.apache.rocketmq</groupId>
                 <artifactId>rocketmq-client</artifactId>
                 <version>${rocketmq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
