@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="mqPushConsumer" class="com.lxl.trade.common.rocketmq.MQPushConsumer" init-method="init">
+        <property name="consumerGroupName" value="consumerGroup"/>
+        <property name="namesrvAddr" value="106.12.112.217:9876"/>
+        <property name="topic" value="testTpoic"/>
+        <property name="processor" ref="testProcessor"/>
+    </bean>
+    <bean id="testProcessor" class="com.lxl.test.TestProcessor"/>
+</beans>
