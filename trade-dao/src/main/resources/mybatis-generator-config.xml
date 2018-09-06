@@ -7,13 +7,16 @@
     <classPathEntry  location="/Users/lixiaole/.m2/repository/mysql/mysql-connector-java/5.1.43/mysql-connector-java-5.1.43.jar"/>
 
     <context id="context"  targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <commentGenerator>
             <property name="suppressDate" value="true"/>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!--数据库链接URL，用户名、密码 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://106.12.112.217:3306/trade?useUnicode=true" userId="root" password="7621024a">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/trade?useUnicode=true" userId="root" password="123456">
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -25,7 +28,7 @@
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- 生成映射文件的包名和位置-->
-        <sqlMapGenerator targetPackage="main.resources.sqlmap.com.lxl.trade.mapper" targetProject="src">
+        <sqlMapGenerator targetPackage="sqlmap.com.lxl.trade.mapper" targetProject="src">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成DAO的包名和位置-->
@@ -33,26 +36,25 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <table tableName="tb_goods"  enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" >
+        <table tableName="goods"  enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" >
             <generatedKey column="goods_id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="tb_coupon" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />
+        <table tableName="coupon" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />
 
-        <table tableName="tb_user" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" >
+        <table tableName="user" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" >
             <generatedKey column="user_id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="tb_order" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />
+        <table tableName="order" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />
 
-        <table tableName="tb_pay" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />
-
-
-        <table tableName="tb_goods_number_log" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />
+        <table tableName="pay" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />
 
 
-        <table tableName="tb_user_money_log" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />
+        <table tableName="goods_number_log" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />
 
+
+        <table tableName="user_money_log" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />
 
     </context>
 </generatorConfiguration>
