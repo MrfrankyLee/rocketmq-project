@@ -1,6 +1,7 @@
 package com.lxl.trade.user.server;
 
 
+import com.lxl.trade.common.Constants.TradeEnums;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -15,9 +16,9 @@ import org.springframework.web.servlet.DispatcherServlet;
  */
 public class UserSever {
     public static void main(String[] args) throws Exception {
-        Server server = new Server(8082);
+        Server server = new Server(TradeEnums.RestServerEnum.USER.getServerPort());
         ServletContextHandler handler = new ServletContextHandler();
-        handler.setContextPath("/user");
+        handler.setContextPath("/"+TradeEnums.RestServerEnum.USER.getContextPath());
 
         XmlWebApplicationContext context = new XmlWebApplicationContext();
         context.setConfigLocation("classpath:xml/spring-web-user.xml");

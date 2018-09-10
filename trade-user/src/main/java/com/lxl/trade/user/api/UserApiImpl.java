@@ -1,6 +1,8 @@
 package com.lxl.trade.user.api;
 
 import com.lxl.trade.common.api.UserApi;
+import com.lxl.trade.common.protocol.user.ChangerUserMoneyReq;
+import com.lxl.trade.common.protocol.user.ChangerUserMoneyRes;
 import com.lxl.trade.common.protocol.user.QueryUserReq;
 import com.lxl.trade.common.protocol.user.QueryUserRes;
 import com.lxl.trade.user.service.UserService;
@@ -24,5 +26,9 @@ public class UserApiImpl implements UserApi {
     @ResponseBody
     public QueryUserRes queryUserById(@RequestBody QueryUserReq queryUserReq) {
         return userService.queryUserById(queryUserReq);
+    }
+
+    public ChangerUserMoneyRes changerUserMoney(ChangerUserMoneyReq ChangerUserMoneyReq) {
+        return null;
     }
 }
