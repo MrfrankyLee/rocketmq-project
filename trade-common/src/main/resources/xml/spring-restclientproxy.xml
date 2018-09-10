@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userClient" class="com.lxl.trade.common.client.RestClientProxy">
+        <property name="serviceInterface" value="com.lxl.trade.common.api.UserApi"/>
+        <property name="serverEnum" value="USER"/>
+    </bean>
+
+    <bean id="orderClient" class="com.lxl.trade.common.client.RestClientProxy">
+        <property name="serviceInterface" value="com.lxl.trade.common.api.OrderApi"/>
+        <property name="serverEnum" value="ORDER"/>
+    </bean>
+
+    <bean id="couponClient" class="com.lxl.trade.common.client.RestClientProxy">
+        <property name="serviceInterface" value="com.lxl.trade.common.api.CouponApi"/>
+        <property name="serverEnum" value="COUPON"/>
+    </bean>
+
+    <bean id="goodsClient" class="com.lxl.trade.common.client.RestClientProxy">
+        <property name="serviceInterface" value="com.lxl.trade.common.api.GoodsApi"/>
+        <property name="serverEnum" value="GOODS"/>
+    </bean>
+
+    <bean id="payClient" class="com.lxl.trade.common.client.RestClientProxy">
+        <property name="serviceInterface" value="com.lxl.trade.common.api.PayApi"/>
+        <property name="serverEnum" value="PAY"/>
+    </bean>
+</beans>

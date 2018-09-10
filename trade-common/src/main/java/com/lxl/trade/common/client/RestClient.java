@@ -1,5 +1,6 @@
 package com.lxl.trade.common.client;
 
+import com.lxl.trade.common.Constants.TradeEnums;
 import com.lxl.trade.common.protocol.user.QueryUserReq;
 import com.lxl.trade.common.protocol.user.QueryUserRes;
 import org.springframework.web.client.RestTemplate;
@@ -15,7 +16,7 @@ public class RestClient {
     public static void main(String[] args) {
         QueryUserReq queryUserReq = new QueryUserReq();
         queryUserReq.setUserId(1);
-        QueryUserRes queryUserRes = restTemplate.postForObject("http://localhost:8082/user/queryUserById", queryUserReq,QueryUserRes.class);
+        QueryUserRes queryUserRes = restTemplate.postForObject(TradeEnums.RestServerEnum.USER.getServerUrl()+"queryUserById", queryUserReq,QueryUserRes.class);
         System.out.println(queryUserRes);
     }
 }
