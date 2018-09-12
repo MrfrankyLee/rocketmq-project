@@ -1,5 +1,7 @@
 package com.lxl.trade.common.protocol.coupon;
 
+import com.lxl.trade.common.protocol.BaseRes;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -8,7 +10,7 @@ import java.util.Date;
  * @date 2018/9/9
  * @Description
  */
-public class QueryCouponRes {
+public class QueryCouponRes extends BaseRes {
 
     private String couponId;
 
