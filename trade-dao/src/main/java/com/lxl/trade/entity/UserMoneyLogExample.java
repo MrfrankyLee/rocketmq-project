@@ -246,52 +246,62 @@ public class UserMoneyLogExample {
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLogTypeEqualTo(Integer value) {
+        public Criteria andMoneyLogTypeEqualTo(String value) {
             addCriterion("money_log_type =", value, "moneyLogType");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLogTypeNotEqualTo(Integer value) {
+        public Criteria andMoneyLogTypeNotEqualTo(String value) {
             addCriterion("money_log_type <>", value, "moneyLogType");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLogTypeGreaterThan(Integer value) {
+        public Criteria andMoneyLogTypeGreaterThan(String value) {
             addCriterion("money_log_type >", value, "moneyLogType");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLogTypeGreaterThanOrEqualTo(Integer value) {
+        public Criteria andMoneyLogTypeGreaterThanOrEqualTo(String value) {
             addCriterion("money_log_type >=", value, "moneyLogType");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLogTypeLessThan(Integer value) {
+        public Criteria andMoneyLogTypeLessThan(String value) {
             addCriterion("money_log_type <", value, "moneyLogType");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLogTypeLessThanOrEqualTo(Integer value) {
+        public Criteria andMoneyLogTypeLessThanOrEqualTo(String value) {
             addCriterion("money_log_type <=", value, "moneyLogType");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLogTypeIn(List<Integer> values) {
+        public Criteria andMoneyLogTypeLike(String value) {
+            addCriterion("money_log_type like", value, "moneyLogType");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLogTypeNotLike(String value) {
+            addCriterion("money_log_type not like", value, "moneyLogType");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLogTypeIn(List<String> values) {
             addCriterion("money_log_type in", values, "moneyLogType");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLogTypeNotIn(List<Integer> values) {
+        public Criteria andMoneyLogTypeNotIn(List<String> values) {
             addCriterion("money_log_type not in", values, "moneyLogType");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLogTypeBetween(Integer value1, Integer value2) {
+        public Criteria andMoneyLogTypeBetween(String value1, String value2) {
             addCriterion("money_log_type between", value1, value2, "moneyLogType");
             return (Criteria) this;
         }
 
-        public Criteria andMoneyLogTypeNotBetween(Integer value1, Integer value2) {
+        public Criteria andMoneyLogTypeNotBetween(String value1, String value2) {
             addCriterion("money_log_type not between", value1, value2, "moneyLogType");
             return (Criteria) this;
         }

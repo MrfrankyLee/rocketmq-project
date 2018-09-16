@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.lxl.trade.entity.UserMoneyLog" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <id column="order_id" property="orderId" jdbcType="VARCHAR" />
-    <id column="money_log_type" property="moneyLogType" jdbcType="INTEGER" />
+    <id column="money_log_type" property="moneyLogType" jdbcType="CHAR" />
     <result column="user_money" property="userMoney" jdbcType="DECIMAL" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -89,13 +89,13 @@
     from user_money_log
     where user_id = #{userId,jdbcType=INTEGER}
       and order_id = #{orderId,jdbcType=VARCHAR}
-      and money_log_type = #{moneyLogType,jdbcType=INTEGER}
+      and money_log_type = #{moneyLogType,jdbcType=CHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="com.lxl.trade.entity.UserMoneyLogKey" >
     delete from user_money_log
     where user_id = #{userId,jdbcType=INTEGER}
       and order_id = #{orderId,jdbcType=VARCHAR}
-      and money_log_type = #{moneyLogType,jdbcType=INTEGER}
+      and money_log_type = #{moneyLogType,jdbcType=CHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.lxl.trade.entity.UserMoneyLogExample" >
     delete from user_money_log
@@ -106,7 +106,7 @@
   <insert id="insert" parameterType="com.lxl.trade.entity.UserMoneyLog" >
     insert into user_money_log (user_id, order_id, money_log_type, 
       user_money, create_time)
-    values (#{userId,jdbcType=INTEGER}, #{orderId,jdbcType=VARCHAR}, #{moneyLogType,jdbcType=INTEGER}, 
+    values (#{userId,jdbcType=INTEGER}, #{orderId,jdbcType=VARCHAR}, #{moneyLogType,jdbcType=CHAR}, 
       #{userMoney,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lxl.trade.entity.UserMoneyLog" >
@@ -136,7 +136,7 @@
         #{orderId,jdbcType=VARCHAR},
       </if>
       <if test="moneyLogType != null" >
-        #{moneyLogType,jdbcType=INTEGER},
+        #{moneyLogType,jdbcType=CHAR},
       </if>
       <if test="userMoney != null" >
         #{userMoney,jdbcType=DECIMAL},
@@ -162,7 +162,7 @@
         order_id = #{record.orderId,jdbcType=VARCHAR},
       </if>
       <if test="record.moneyLogType != null" >
-        money_log_type = #{record.moneyLogType,jdbcType=INTEGER},
+        money_log_type = #{record.moneyLogType,jdbcType=CHAR},
       </if>
       <if test="record.userMoney != null" >
         user_money = #{record.userMoney,jdbcType=DECIMAL},
@@ -179,7 +179,7 @@
     update user_money_log
     set user_id = #{record.userId,jdbcType=INTEGER},
       order_id = #{record.orderId,jdbcType=VARCHAR},
-      money_log_type = #{record.moneyLogType,jdbcType=INTEGER},
+      money_log_type = #{record.moneyLogType,jdbcType=CHAR},
       user_money = #{record.userMoney,jdbcType=DECIMAL},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
@@ -198,7 +198,7 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
       and order_id = #{orderId,jdbcType=VARCHAR}
-      and money_log_type = #{moneyLogType,jdbcType=INTEGER}
+      and money_log_type = #{moneyLogType,jdbcType=CHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lxl.trade.entity.UserMoneyLog" >
     update user_money_log
@@ -206,6 +206,6 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where user_id = #{userId,jdbcType=INTEGER}
       and order_id = #{orderId,jdbcType=VARCHAR}
-      and money_log_type = #{moneyLogType,jdbcType=INTEGER}
+      and money_log_type = #{moneyLogType,jdbcType=CHAR}
   </update>
 </mapper>

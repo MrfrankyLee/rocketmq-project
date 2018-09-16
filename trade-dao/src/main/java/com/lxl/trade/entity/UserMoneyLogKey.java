@@ -7,7 +7,7 @@ public class UserMoneyLogKey implements Serializable {
 
     private String orderId;
 
-    private Integer moneyLogType;
+    private String moneyLogType;
 
     private static final long serialVersionUID = 1L;
 
@@ -27,12 +27,12 @@ public class UserMoneyLogKey implements Serializable {
         this.orderId = orderId == null ? null : orderId.trim();
     }
 
-    public Integer getMoneyLogType() {
+    public String getMoneyLogType() {
         return moneyLogType;
     }
 
-    public void setMoneyLogType(Integer moneyLogType) {
-        this.moneyLogType = moneyLogType;
+    public void setMoneyLogType(String moneyLogType) {
+        this.moneyLogType = moneyLogType == null ? null : moneyLogType.trim();
     }
 
     @Override

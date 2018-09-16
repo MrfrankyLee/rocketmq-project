@@ -16,7 +16,7 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!--数据库链接URL，用户名、密码 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/trade?useUnicode=true" userId="root" password="123456">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://106.12.112.217:3306/trade?useUnicode=true" userId="root" password="7621024a">
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -36,7 +36,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <table tableName="goods"  enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" >
+       <!-- <table tableName="goods"  enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" >
             <generatedKey column="goods_id" sqlStatement="Mysql" identity="true"/>
         </table>
 
@@ -52,7 +52,7 @@
 
 
         <table tableName="goods_number_log" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />
-
+-->
 
         <table tableName="user_money_log" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" />
 

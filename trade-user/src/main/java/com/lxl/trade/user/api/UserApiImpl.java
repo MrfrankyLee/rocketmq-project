@@ -1,5 +1,6 @@
 package com.lxl.trade.user.api;
 
+import com.lxl.trade.common.Constants.TradeEnums;
 import com.lxl.trade.common.api.UserApi;
 import com.lxl.trade.common.protocol.user.ChangerUserMoneyReq;
 import com.lxl.trade.common.protocol.user.ChangerUserMoneyRes;
@@ -27,8 +28,16 @@ public class UserApiImpl implements UserApi {
     public QueryUserRes queryUserById(@RequestBody QueryUserReq queryUserReq) {
         return userService.queryUserById(queryUserReq);
     }
-
-    public ChangerUserMoneyRes changerUserMoney(ChangerUserMoneyReq ChangerUserMoneyReq) {
-        return null;
+    @RequestMapping(value = "/changerUserMoney",method = RequestMethod.POST)
+    @ResponseBody
+    public ChangerUserMoneyRes changerUserMoney(ChangerUserMoneyReq changerUserMoneyReq) {
+        ChangerUserMoneyRes changerUserMoneyRes = new ChangerUserMoneyRes();
+        try {
+             changerUserMoneyRes = userService.changerUserMoney(changerUserMoneyReq);
+        } catch (Exception e) {
+             changerUserMoneyRes.setRestCode(TradeEnums.RestEnum.FAIL.getCode());
+             changerUserMoneyRes.setRestDesc(e.getMessage());
+        }
+        return changerUserMoneyRes;
     }
 }

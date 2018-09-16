@@ -1,5 +1,6 @@
 package com.lxl.trade.common.rocketmq;
 
+import com.lxl.trade.common.Constants.MQEnum;
 import com.lxl.trade.common.exception.MQException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.client.exception.MQClientException;
@@ -70,7 +71,7 @@ public class MQProducer {
     }
 
     // 发送消息
-    public SendResult senMessage(String topic , String tags ,String keys ,String messageBody) throws MQException {
+    public SendResult senMessage(String topic,String tags, String keys , String messageBody) throws MQException {
         Message message = new Message(topic,tags,keys,messageBody.getBytes());
         if(StringUtils.isBlank(topic)){
             throw new MQException("Topic is blank");
@@ -85,5 +86,9 @@ public class MQProducer {
             logger.error("message send fail:{}",e.getMessage(),e);
             throw new MQException(e);
         }
+    }
+
+    public SendResult senMessage(MQEnum.TopicEnum topicEnum, String keys , String messageBody) throws MQException {
+        return this.senMessage(topicEnum.getTopic(),topicEnum.getTags(),keys,messageBody);
     }
 }

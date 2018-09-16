@@ -2,8 +2,9 @@ package com.lxl.trade.mapper;
 
 import com.lxl.trade.entity.User;
 import com.lxl.trade.entity.UserExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserMapper {
     int countByExample(UserExample example);
@@ -27,4 +28,8 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    int reduceUserMoney(User record);
+
+    int addUserMoney(User record);
 }
