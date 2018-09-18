@@ -1,9 +1,12 @@
 package com.lxl.trade.order.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.lxl.trade.common.Constants.MQEnum;
 import com.lxl.trade.common.Constants.TradeEnums;
 import com.lxl.trade.common.api.CouponApi;
 import com.lxl.trade.common.api.GoodsApi;
 import com.lxl.trade.common.api.UserApi;
+import com.lxl.trade.common.exception.MQException;
 import com.lxl.trade.common.exception.OrderException;
 import com.lxl.trade.common.protocol.coupon.ChangeCouponStatusReq;
 import com.lxl.trade.common.protocol.coupon.ChangeCouponStatusRes;
@@ -13,6 +16,7 @@ import com.lxl.trade.common.protocol.goods.QueryGoodsReq;
 import com.lxl.trade.common.protocol.goods.QueryGoodsRes;
 import com.lxl.trade.common.protocol.goods.ReduceGoodsNumberReq;
 import com.lxl.trade.common.protocol.goods.ReduceGoodsNumberRes;
+import com.lxl.trade.common.protocol.mq.CancelOrderMQ;
 import com.lxl.trade.common.protocol.order.ConfirmOrderReq;
 import com.lxl.trade.common.protocol.order.ConfirmOrderRes;
 import com.lxl.trade.common.protocol.user.ChangerUserMoneyReq;
@@ -25,6 +29,7 @@ import com.lxl.trade.entity.Order;
 import com.lxl.trade.mapper.OrderMapper;
 import com.lxl.trade.order.service.OrderService;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.rocketmq.client.producer.SendResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -121,8 +126,20 @@ public class OrderServiceImpl implements OrderService {
             }
 
         }catch (Exception e){
-            // 失败  发送MQ
-            // mqProducer.senMessage();
+            // 失败  发送MQ  下单四
+            CancelOrderMQ mq = new CancelOrderMQ();
+            mq.setOrderId(orderId);
+            mq.setUserId(confirmOrderReq.getUserId());
+            mq.setGoodsId(confirmOrderReq.getGoodsId());
+            mq.setGoodsNumber(confirmOrderReq.getGoodsNumber());
+            mq.setCouponId(confirmOrderReq.getCouponId());
+            mq.setUserMoney(confirmOrderReq.getMoneyPaid());
+            try {
+                SendResult sendResult = mqProducer.senMessage(MQEnum.TopicEnum.ORDER_CANCEL,orderId,JSON.toJSONString(mq));
+                System.out.println(sendResult);
+            } catch (MQException e1) {
+                e1.printStackTrace();
+            }
         }
     }
     private String saveNoConfirmOrder(ConfirmOrderReq confirmOrderReq) throws Exception {
