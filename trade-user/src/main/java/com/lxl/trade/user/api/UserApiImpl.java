@@ -28,6 +28,7 @@ public class UserApiImpl implements UserApi {
     public QueryUserRes queryUserById(@RequestBody QueryUserReq queryUserReq) {
         return userService.queryUserById(queryUserReq);
     }
+
     @RequestMapping(value = "/changerUserMoney",method = RequestMethod.POST)
     @ResponseBody
     public ChangerUserMoneyRes changerUserMoney(ChangerUserMoneyReq changerUserMoneyReq) {

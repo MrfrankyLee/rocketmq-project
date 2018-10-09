@@ -10,6 +10,7 @@
 
     <import resource="spring-restclientproxy.xml"/>
     <import resource="spring-rocketmq-producer.xml"/>
+    <import resource="spring-rocketmq-consumer.xml"/>
     <import resource="classpath:xml/spring-dao.xml"/>
     <context:component-scan base-package="com.lxl.trade.order"/>
     <mvc:annotation-driven/>

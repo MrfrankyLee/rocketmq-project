@@ -74,20 +74,25 @@ public class UserServiceImpl implements UserService {
         User user =  new User();
         user.setUserId(changerUserMoneyReq.getUserId());
         user.setUserMoney(changerUserMoneyReq.getUserMoney());
+
+        //查询付款记录
+        UserMoneyLogExample logExample = new UserMoneyLogExample();
+        logExample.createCriteria()
+                .andOrderIdEqualTo(changerUserMoneyReq.getOrderId())
+                .andUserIdEqualTo(changerUserMoneyReq.getUserId())
+                .andMoneyLogTypeEqualTo(TradeEnums.UserMoneyLogTypeEnum.PAID.getStatusCode());
+        int count = userMoneyLogMapper.countByExample(logExample);
         //订单付款
         if(changerUserMoneyReq.getMoneyLogType().equals(TradeEnums.UserMoneyLogTypeEnum.PAID.getStatusCode())){
-            int result =  userMapper.reduceUserMoney(user);
+            if(count > 0){
+                throw new RuntimeException("已经付过款,不能重复付款");
+            }
+            userMapper.reduceUserMoney(user);
         }
 
         //订单退款
         if(changerUserMoneyReq.getMoneyLogType().equals(TradeEnums.UserMoneyLogTypeEnum.RETURN.getStatusCode())){
-            //查询付款记录
-            UserMoneyLogExample logExample = new UserMoneyLogExample();
-            logExample.createCriteria()
-                    .andOrderIdEqualTo(changerUserMoneyReq.getOrderId())
-                    .andUserIdEqualTo(changerUserMoneyReq.getUserId())
-                    .andMoneyLogTypeEqualTo(TradeEnums.UserMoneyLogTypeEnum.PAID.getStatusCode());
-            int count = userMoneyLogMapper.countByExample(logExample);
+
             if(count == 0){
                 throw new  RuntimeException("没有付款信息,不能退款");
             }

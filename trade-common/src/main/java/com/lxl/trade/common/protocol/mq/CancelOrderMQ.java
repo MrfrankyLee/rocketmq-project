@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 /**
  * @author lixiaole
  * @date 2018/9/16
- * @Description
+ * @Description  取消订单消息体
  */
 public class CancelOrderMQ {
     private String orderId;
